@@ -8,13 +8,25 @@
 \graphicspath{ {./images/} }
 
 % Title
-\title{CS535 Design and Analysis of Algorithms - Assignment 1}
-\author{Batkhishig Dulamsurankhor - A20543498}
+\title{CS542 Computer Networks I - Assignment 1}
+\author{
+  Batkhishig Dulamsurankhor - A20543498 \\
+  Jen-Kai	Wang - A20576222 \\
+  Yi Ning	Tseng - A20554952 \\
+}
 \date{\today} % Use \date{} for no date
 
 \begin{document}
 
 \maketitle
+
+Contributions:
+
+Batkhishig - Q1, Q4, Q7, Q10, Q13, Q16
+
+Jen-Kai	Wang - Q2, Q5, Q8, Q11, Q14
+
+Yi Ning	Tseng - Q3, Q6, Q9, Q12, Q15
 
 \begin{enumerate}
   \item 0xDA0121C8=(13*16+10).(0*16+1).(2*16+1).(12*16+8)=218.1.33.200
@@ -32,17 +44,17 @@
 
       Class B range: 128.0.0.0 to 191.255.255.255. Each block consists of $2^{16}$ addresses.
 
-      12th block: 128.15.0.0 to 128.15.255.255.
+      12th block: 128.11.0.0 to 128.11.255.255.
       \item 318th block of class B
 
       Class B range: 128.0.0.0 to 191.255.255.255. Each block consists of $2^{16}$ addresses.
 
-      318th block: 129.63.0.0 to 129.63.255.255.
+      318th block: 129.61.0.0 to 129.61.255.255.
       \item 3rd block of class C
 
-      Class B range: 192.0.0.0 to 223.255.255.255. Each block consists of $2^{8}$ addresses.
+      Class C range: 192.0.0.0 to 223.255.255.255. Each block consists of $2^{8}$ addresses.
 
-      3rd block: 192.0.3.0 to 192.0.3.255.
+      3rd block: 192.0.2.0 to 192.0.2.255.
     \end{enumerate}
   \item Assume classful addressing. If one of the hosts in a certain network has an IP address 129.6.0.10 (4 points)
   \begin{enumerate}
@@ -83,18 +95,18 @@
     \item Assign an appropriate subnet mask to each department.
     \begin{itemize}
       \item Department A has 60 hosts. We need at least $64=2^6$ addresses.
-      So subnet mask should have prefix /26. We can assign 198.51.100.0/25.
+      So subnet mask should have prefix /26.
       \item Department B has 29 hosts. We need at least $32=2^5$ addresses.
-      So subnet mask should have prefix /27. We can assign 198.51.100.64/25.
+      So subnet mask should have prefix /27.
       \item Department C has 12 hosts. We need at least $16=2^4$ addresses.
-      So subnet mask should have prefix /28. We can assign 198.51.100.96/25.
+      So subnet mask should have prefix /28.
     \end{itemize}
 
     \item Specify the range of usable IP addresses (i.e. addresses that can be assigned to hosts or routers) allocated to each department.
     \begin{itemize}
-      \item Department A range: 198.51.100.0-198.51.100.63.
-      \item Department B range: 198.51.100.64-198.51.100.95.
-      \item Department C range: 198.51.100.96-198.51.100.111.
+      \item Department A range: 198.51.100.1/26-198.51.100.62/26. 0, 63 are special addresses.
+      \item Department B range: 198.51.100.65/27-198.51.100.94/27. 64, 95 are special addresses.
+      \item Department C range: 198.51.100.97/28-198.51.100.110/28. 96, 111 are special addresses.
     \end{itemize}
   \end{enumerate}
 
@@ -106,7 +118,7 @@
 
     \item Specify the range of addresses for the first subnet.
 
-    First address: 171.16.0.0. The number of address in each subnet is $2^{32-24}=256$. Therefore, the last address is $171.16.0.255$.
+    First address: 171.16.0.0/24. The number of address in each subnet is $2^{32-24}=256$. Therefore, the last address is $171.16.0.255/24$.
 
     \item What is the direct broadcast address of the first subnet?
 
@@ -119,14 +131,17 @@
     
     $2^{20-14}=2^6=64$ subnets are created.
 
+    $2^{32-12}=4096$ addresses in each block.
+
     \item What is the range of usable addresses in the 33rd subnet?
     
-    Start address offset: $2^{32-20}*32=2^{12}*32=2^{17}$ addresses. This converts to hostid=10.00000000.00000000 in a dotted notation making start of the range 150.202.0.0.
-    The end of the range is: 150.202.15.255.
+    First address: $4096*(33-1)=2*2^8*2^8=2.0.0_{256}$. So the start address is: 150.202.0.0.
+    The end of the range is: 150.202.0.0+4096-1=150.202.0.0+16.0-1=150.202.16.0-1=150.202.15.255.
 
     \item What is the direct broadcast address of the 27th subnet?
-
-    The netid of 27th subnet is: $2^{32-20}*26=2^{12}*26=00.10100000.00000000$. The subnetwork address is 150.200.160.0/20. Direct broadcast address is where hostid is all 1s: 150.200.175.255.
+    
+    First address: $4096*(27-1)=106496=1.160.0_{256}$. So the start address is: 150.201.160.0.
+    The end of the range is: 150.201.160.0+4096-1=150.201.160.0+16.0-1=150.201.176.0-1=150.201.175.255.
   \end{enumerate}
 
   \item Do the following addition using only the base 256 numbering system: 123.145.167.199 + 212.134.156.178 = ? (2 points)
@@ -137,9 +152,9 @@
 
   The number of addresses: $2^{32-25}=2^7=128$.
 
-  The first address: 130.42.56.0.
+  The first address: 130.42.56.0/25.
 
-  The last address: 130.42.56.127.
+  The last address: 130.42.56.127/25.
 
   \item An organization is allocated a block of addresses 25.4.32.0/22 and needs 7 subnets.
   Find the number of addresses in this block and design the following subnets.
@@ -167,7 +182,7 @@
 
     $32=2^{5}$. prefix: 32-5=27. network address: 25.4.35.128/27. range: 25.4.35.128/27-25.4.35.159/27
 
-    $32=2^{5}$. prefix: 32-5=27. network address: 25.4.35.160/27. range: 25.4.35.160/27-25.4.35.192/27
+    $32=2^{5}$. prefix: 32-5=27. network address: 25.4.35.160/27. range: 25.4.35.160/27-25.4.35.191/27
 
   \end{enumerate}
   
@@ -202,18 +217,21 @@
   \item A network administrator uses the subnet mask 255.255.240.0 to configure the network 172.15.0.0.
   How many subnets have been created? How many usable addresses are there in each subnet? Assume classful addressing. (4 points)
 
+  $172=10101100_2$, so the network is class B with mask 255.255.0.0 with prefix /16.
+  
   $240=1111000_2$. The prefix is therefore 8+8+4=/20.
 
-  The address range is: 172.15.0.0/20-172.15.223.255.
-
-  The number of addresses in this subnetwork is $2^{32-20}=2^12=4096$.
+  The number of subnets: $2^{20-16}=2^4=16$.
+  
+  Each subnet has $2^{32-20}=2^{12}=4096$ addresses.
   The first and the last addresses are reserved for network address and broadcast addresses.
-  So the number of usable addresses is 4094.
+  So the number of usable addresses is $4096-2=4094$.
 
   \item Find the 1532nd address and the last address of the block 192.168.16.0/20. (4 points)
 
-  1532/256=6. Since it is 0-indexed, 6.0-1=5.255.
-  192.168.21.255
+  $1532=5.252_{256}$. Since it is 0-indexed, $192.168.16.0+5.252-1=192.168.21.251/20$
+  
+  The last address: $192.168.16.0+2^{32-20}-1=192.168.16.0+15.255=192.168.31.255/20$
 
   \item An organization has been allocated a block of IP addresses.
   The IP address 154.101.43.163 is the 36th address in this block.
